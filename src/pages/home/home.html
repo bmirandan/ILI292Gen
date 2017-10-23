@@ -1,0 +1,76 @@
+<ion-header>
+  
+    <ion-navbar>
+    <ion-title>
+    <img class="title-image" height="40"   src="assets/img/logoio.png" > 
+    </ion-title>
+    </ion-navbar>
+      
+</ion-header>
+
+<ion-content padding>
+        
+        <ion-fab right top>
+            <button ion-fab (click)="newInstance();">
+              <ion-icon name="redo"></ion-icon>
+            </button>
+          </ion-fab>
+        
+  <h2>Generador de instancias aleatorias</h2>
+  <p>
+    
+  </p>
+  <p>
+   Se pide ingresar los datos de capacidad máxima del problema 
+   junto con las cotas de cada variable tanto peso como valor.
+   Al presionar el botón se genera esta data y se muestra en pantalla.  </p>
+   
+      <ion-grid *ngIf=showData>
+        
+          <ion-row text-center>
+            <ion-col>Peso</ion-col>
+            <ion-col>Valor</ion-col>
+          </ion-row>
+      <ion-grid *ngFor="let gendata of datagen">
+          <ion-row text-center>
+                  <ion-col>{{gendata.weight}}</ion-col>
+                  <ion-col>{{gendata.rating}}</ion-col>
+                </ion-row>
+              </ion-grid>
+        </ion-grid>
+
+       <form *ngIf="showInput" (ngSubmit)="generateData()">
+          <ion-item>
+              <ion-label floating>Capacidad contenedor</ion-label>
+              <ion-input name="1s" [(ngModel)]="capacidad" type="number"></ion-input>
+            </ion-item>
+          
+            <ion-item>
+              <ion-label floating>Número items a generar</ion-label>
+              <ion-input name ="num"[(ngModel)]="parameters.items" type="number"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Cota inferior Peso</ion-label>
+                <ion-input name ="num1"[(ngModel)]="parameters.inferiorPeso" type="number"></ion-input>
+              </ion-item>
+              <ion-item>
+                  <ion-label floating>Cota superior Peso</ion-label>
+                  <ion-input name ="num2" [(ngModel)]="parameters.superiorPeso" type="number"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label floating>Cota inferior Valor</ion-label>
+                    <ion-input name ="num3" [(ngModel)]="parameters.inferiorValor" type="number"></ion-input>
+                  </ion-item>
+                  <ion-item>
+                      <ion-label floating>Cota superior Valor</ion-label>
+                      <ion-input name ="num4" [(ngModel)]="parameters.superiorValor"type="number"></ion-input>
+                    </ion-item>
+                    
+                    <ion-fab right>
+                        <button ion-fab color="danger">
+                          <ion-icon name="play"></ion-icon>
+                        </button>
+                      </ion-fab>
+      </form>
+  </ion-content>
+
